@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>بانک مرکزی جمهوری اسلامی ایران</title>
+<link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;500;700&display=swap" rel="stylesheet"/>
+<style>
+:root{--header:#4a4a4a;--search:#1a4d73;--brand:#e85d1c;--sky:#2c8fc4;--foot:#3f3f3f;--ink:#333;--muted:#6b6b6b;--line:#d4d4d4;--bg:#f4f4f4}
+*{box-sizing:border-box}html,body{margin:0;background:var(--bg);color:var(--ink);font-family:Vazirmatn,Tahoma,sans-serif}a{color:inherit;text-decoration:none}button,input{font:inherit}button{cursor:pointer}
+.search{background:var(--search);color:#fff;display:flex;align-items:center;gap:8px;padding:6px 10px;direction:ltr}
+.search .en{background:#111;padding:8px 12px;font-size:12px}
+.search input{flex:1;background:transparent;border:0;color:#fff;text-align:right;direction:rtl;outline:none}
+.top{background:var(--header);color:#fff;display:flex;align-items:center;justify-content:space-between;padding:12px 14px}
+.top h1{margin:0;font-size:16px;font-weight:500}
+.icon-btn{width:42px;height:42px;border:1px solid rgba(255,255,255,.35);background:transparent;color:#fff}
+.staffbar{background:#fff;border-bottom:1px solid var(--line);display:flex;gap:4px;overflow-x:auto;padding:4px 8px;font-size:12px}
+.staffbar button,.staffbar span{border:0;background:none;padding:8px;white-space:nowrap}
+.staffbar .out{color:#8f3a3a;margin-right:auto}
+.hero{background:#555;color:#fff}.rel{position:relative}
+.hero-cap{padding:22px 18px 10px;text-align:center;font-size:17px;line-height:1.8}
+.date-badge{position:absolute;left:12px;bottom:12px;background:#111;color:#fff;font-size:12px;padding:4px 8px}.date-badge span{color:var(--brand)}
+.news{background:#fff;position:relative}.tag{position:absolute;right:0;top:0;background:var(--brand);color:#fff;padding:6px 12px;font-size:13px}
+.row{display:block;padding:16px;border-bottom:1px solid var(--line)}.kicker{color:var(--muted);font-size:13px}.row p{margin:6px 0 0;font-size:14px;line-height:1.8}
+footer{background:var(--foot);color:#d8d8d8}footer .fl{display:block;padding:12px 16px;border-bottom:1px solid rgba(255,255,255,.08)}
+.contact-wrap{position:relative;margin-top:18px}
+.contact-tag{position:absolute;right:16px;top:-10px;background:var(--brand);color:#fff;font-size:12px;padding:4px 10px}
+.contact{background:var(--sky);color:#fff;text-align:center;padding:36px 16px 28px}
+.copy{text-align:center;font-size:12px;padding:16px}
+.fab{position:fixed;left:14px;bottom:14px;width:48px;height:48px;background:#fff;border:0;box-shadow:0 6px 18px rgba(0,0,0,.18);font-size:22px;z-index:20}
+.menu{display:none;background:var(--header);color:#fff}.menu.open{display:block}
+.menu button{width:100%;background:none;border:0;border-bottom:1px solid rgba(255,255,255,.12);color:inherit;text-align:right;padding:14px 16px}
+.wrap{max-width:760px;margin:0 auto}.page{padding:20px 16px 80px}
+.card{background:#fff;border:1px solid var(--line);padding:18px;margin-bottom:14px}h2{margin:0 0 8px;font-size:18px}
+label{display:block;font-size:13px;margin:12px 0 6px}input{width:100%;border:1px solid var(--line);padding:10px}
+.btn{background:var(--search);color:#fff;border:0;padding:12px 16px;width:100%;margin-top:14px}
+.btn.ok{background:#2f6b4f}
+.demo{width:100%;text-align:right;border:1px solid var(--line);background:#fff;padding:10px;margin-top:8px;display:flex;justify-content:space-between}
+.badge{display:inline-block;font-size:11px;padding:2px 8px;background:#f6efd9;color:#8a6a28}
+.step{border-right:3px solid #d4d4d4;padding:10px 14px;margin:8px 8px 8px 0}.step.done{border-right-color:#2f6b4f}.step.now{border-right-color:var(--brand);background:#fff6ef}
+.step span{display:block;color:var(--muted);font-size:12px;margin:4px 0}
+.hidden{display:none!important}.grid{display:grid;gap:8px}
+.alert{background:#7a1f1f;color:#fff;padding:14px 16px;text-align:center;line-height:1.9;font-size:14px}
+.alert b{display:block;font-size:15px;margin-bottom:4px}
+</style></head><body>
+<div class="search"><span class="en">English</span><input id="q" placeholder="جست و جو برای ..."/></div>
+<div class="top"><h1>بانک مرکزی جمهوری اسلامی ایران</h1><button class="icon-btn" id="menuBtn" type="button">☰</button></div>
+<div class="staffbar hidden" id="staffbar">
+<button type="button" data-go="dash">داشبورد</button>
+<button type="button" data-go="unblocks">رفع مسدودی</button>
+<button type="button" data-go="process">بررسی فرآیند</button>
+<button type="button" data-go="inq">استعلام</button>
+<span id="who"></span>
+<button type="button" class="out" id="logout">خروج</button></div>
+<div class="menu" id="menu">
+<button type="button" data-go="login" id="deskLink">میز خدمت بانک مرکزی</button>
+<button type="button" data-go="home">اخبار بانک</button>
+<button type="button" data-go="process">بررسی فرآیند رفع مسدودی</button>
+</div>
+<div id="app"></div>
+<footer><a class="fl" data-go="home">همه خبرها</a><a class="fl" data-go="process">بررسی فرآیند رفع مسدودی</a>
+<div class="contact-wrap"><div class="contact-tag">اطلاعات تماس</div>
+<div class="contact"><div style="font-size:18px;margin-bottom:10px">بانک مرکزی جمهوری اسلامی ایران</div><div>تهران - بلوار میرداماد - شماره ۱۹۸</div><div>مرکز تلفن : ۲۹۹۵۰۰۰۰</div></div></div>
+<div class="copy">تمامی حقوق مادی و معنوی این پایگاه متعلق به بانک مرکزی جمهوری اسلامی ایران است.</div></footer>
+<button class="fab" type="button">♿</button>
+<script>
+(function(){
+var STAFF=[{code:"14051200",name:"حسین کریمی"},{code:"14051201",name:"مریم رضایی"},{code:"14051202",name:"علی محمدی"}];
+var NEWS=[["آمادگی بانک مرکزی برای عرضه ارز تا دو میلیارد دلار","موسسات اعتباری پیشرو در نظارت شرعی معرفی شدند","شبکه بانکی در خط مقدم جنگ ترکیبی است"],["نرخ حواله و اسکناس مرکز مبادله به‌روزرسانی شد","دستورالعمل رفع مسدودی حساب‌های مالیاتی ابلاغ شد","عملکرد پایا و ساتنا بدون اختلال اعلام شد"],["تخصیص ارز دارو و کالاهای اساسی ادامه دارد","گزارش ماهانه نقدینگی منتشر شد","نشست مدیران نظارت برگزار شد"],["عرضه اوراق گواهی سپرده اعلام شد","سامانه استعلام مسدودی به‌روزرسانی شد","همایش سیاست پولی فردا برگزار می‌شود"]];
+var EV=[["نشست بانک مرکزی و سازمان مالیاتی — میرداماد","کارگاه رفع مسدودی — سالن همایش","روادید ارزی زیارت و درمان — مرکز مبادله"],["جلسه شورای فقهی","نسخه جدید ساتنا","روادید ارزی دانشجویی"],["بازدید نظارت استان مرکزی — اراک","میز خدمت رفع مسدودی مالیاتی","روادید حج و عمره"],["همایش بانکداری اسلامی","کارگروه شبا پایا ساتنا","روادید مأموریت و درمان"]];
+var VISA=[["۴۲٬۰۰۰","۴۳٬۲۰۰","۴۲٬۸۰۰"],["۴۲٬۱۵۰","۴۳٬۳۵۰","۴۲٬۹۰۰"],["۴۱٬۹۵۰","۴۳٬۱۰۰","۴۲٬۷۰۰"],["۴۲٬۳۰۰","۴۳٬۴۸۰","۴۳٬۰۰۰"]];
+var WD=["یکشنبه","دوشنبه","سه‌شنبه","چهارشنبه","پنجشنبه","جمعه","شنبه"];
+var MO=["فروردین","اردیبهشت","خرداد","تیر","مرداد","شهریور","مهر","آبان","آذر","دی","بهمن","اسفند"];
+function toJalali(gy,gm,gd){var g=[0,31,59,90,120,151,181,212,243,273,304,334];var gy2=gm>2?gy+1:gy;var days=355666+365*gy+Math.floor((gy2+3)/4)-Math.floor((gy2+99)/100)+Math.floor((gy2+399)/400)+gd+g[gm-1];var jy=-1595+33*Math.floor(days/12053);days%=12053;jy+=4*Math.floor(days/1461);days%=1461;if(days>365){jy+=Math.floor((days-1)/365);days=(days-1)%365}var jm=days<186?1+Math.floor(days/31):7+Math.floor((days-186)/30);var jd=1+(days<186?days%31:(days-186)%30);return{jy:jy,jm:jm,jd:jd}}
+function pad(n){return String(n).padStart(2,"0")}
+function fa(s){return String(s).replace(/[0-9]/g,function(d){return "۰۱۲۳۴۵۶۷۸۹"[d]})}
+function nowInfo(){var d=new Date();var j=toJalali(d.getFullYear(),d.getMonth()+1,d.getDate());var slot=Math.floor(d.getTime()/(6*3600*1000));var ws=Math.floor(d.getHours()/6)*6;return{slot:slot,dateFa:fa(j.jy+"/"+pad(j.jm)+"/"+pad(j.jd)),dateLong:WD[d.getDay()]+" "+fa(j.jd)+" "+MO[j.jm-1]+" "+fa(j.jy),timeFa:fa(pad(d.getHours())+":"+pad(d.getMinutes())),window:fa(pad(ws)+":00")+" تا "+fa(pad((ws+6)%24)+":00")}}
+var CASE={name:"مریم جعفری",nid:"۰۵۳۲۵۹۱۰۰۲",bank:"بانک ملت",acc:"۹۹۸۷۰۴۵۶۳۰۱",amount:"۷۴۹٬۸۶۵٬۷۹۰٬۴۳۲ ریال",track:"RMS-1405-10089",status:"در حال بررسی رفع مسدودی"};
+var session=null,slide=0,view="home";
+function go(v){document.getElementById("menu").classList.remove("open");if("dash unblocks inq case process letter-tax letter-court letter-cbi".indexOf(v)>=0&&!session){view="login";render();return}view=v;render();window.scrollTo(0,0)}
+function pages(){
+var info=nowInfo(), pack=NEWS[info.slot%4], ev=EV[info.slot%4], visa=VISA[info.slot%4];
+if(view==="home"){
+return '<div class="alert"><b>اطلاعیه بانک مرکزی</b>به دلیل بالا بردن امنیت زیرساخت بانکی، کلیه تراکنش‌ها تا ساعت ۲۲ در تاریخ ۱۴۰۵/۰۶/۲۸ با اختلال مواجه است. از صبوری شما متشکریم.</div>'+
+'<div class="hero"><div class="rel"><div style="height:210px;background:linear-gradient(160deg,#2a3a4a,#6a5a4a);display:grid;place-items:center;text-align:center;padding:12px">تالار همایش بانک مرکزی<br>'+info.dateLong+'</div><div class="date-badge"><span>■</span> '+info.dateFa+' · '+info.timeFa+'</div></div><div class="hero-cap">'+pack[slide%3]+'</div></div>'+
+'<div class="news wrap"><div class="tag">آخرین خبرها</div><div style="height:36px"></div><div class="row" style="background:#f7f3ea;font-size:13px">به‌روزرسانی هر ۶ ساعت · پنجره '+info.window+'</div><div class="row"><p>'+pack[0]+'</p></div><div class="row"><p>'+pack[1]+'</p></div><div class="row"><p>'+pack[2]+'</p></div></div>'+
+'<div class="news wrap" style="margin-top:12px"><div class="tag">رویدادها و روادید</div><div style="height:36px"></div><div class="row"><p>'+ev[0]+'</p></div><div class="row"><p>'+ev[1]+'</p></div><div class="row"><p>'+ev[2]+'</p></div><div class="row"><div class="kicker">نرخ روادید ارزی</div><p>زیارتی '+visa[0]+' تومان</p><p>دانشجویی '+visa[1]+' تومان</p><p>درمانی '+visa[2]+' تومان</p></div></div>';
+}
+if(view==="login"){
+var btns="";for(var i=0;i<STAFF.length;i++){btns+='<button type="button" class="demo" data-demo="'+STAFF[i].code+'"><span>'+STAFF[i].name+'</span><span>'+STAFF[i].code+'</span></button>'}
+return '<div class="page wrap"><div class="card"><h2>میز خدمت کارکنان</h2><form id="loginForm"><label>کد پرسنلی</label><input name="code" placeholder="14051201"/><label>رمز عبور</label><input name="pass" type="password"/><p id="err" style="color:#8f3a3a"></p><button class="btn" type="submit">ورود به سامانه</button></form>'+btns+'</div></div>';
+}
+if(view==="dash"){
+return '<div class="page wrap"><div class="card"><h2>سلام، '+session.name+'</h2><p><b data-go="case">'+CASE.name+'</b> — '+CASE.track+' — <span class="badge">'+CASE.status+'</span></p></div><div class="card"><button type="button" class="btn" data-go="process">بررسی فرآیند رفع مسدودی حساب</button></div></div>';
+}
+if(view==="unblocks"||view==="case"){
+return '<div class="page wrap"><div class="card"><h2>'+CASE.name+'</h2><div class="grid"><div>کد ملی: '+CASE.nid+'</div><div>'+CASE.bank+' '+CASE.acc+'</div><div>مسدود: '+CASE.amount+'</div><div>پرداخت مالیات: ۳۱٬۳۷۰٬۰۹۸٬۴۸۰ ریال — ۱۴۰۵/۰۵/۲۵</div></div></div><div class="card"><h2>نامه‌های ارسال‌شده</h2><p><a href="#" data-go="letter-tax">نامه دارایی / امور مالیاتی اراک به اجرای احکام</a><br><small>۱۴۰۵/م/۴۴۱۲/آ — ۱۸ مرداد</small></p><p><a href="#" data-go="letter-court">نامه شعبه دوم اجرای احکام اراک به بانک مرکزی</a><br><small>۱۴۰۵/اج/۲/۸۸۱۹ — ۲۰ مرداد</small></p><p><a href="#" data-go="letter-cbi">نامه بانک مرکزی — ابلاغ مسدودی</a><br><small>۱۴۰۵/مس/۷۷۱۰۴ — ۲۱ مرداد</small></p></div><div class="card"><button type="button" class="btn" data-go="process">بررسی فرآیند</button></div></div>';
+}
+if(view==="letter-tax"||view==="letter-court"||view==="letter-cbi"){
+var L={"letter-tax":{org:"سازمان امور مالیاتی کشور",line:"اداره امور مالیاتی شهرستان اراک",no:"۱۴۰۵/م/۴۴۱۲/آ",date:"۱۴۰۵/۰۵/۱۸",to:"ریاست محترم شعبه دوم اجرای احکام مدنی اراک",sub:"درخواست مسدودی حساب مریم جعفری",body:"با سلام؛ خانم مریم جعفری به شماره ملی ۰۵۳۲۵۹۱۰۰۲ بدهی مالیاتی قطعی ۷۴۹٬۸۶۵٬۷۹۰٬۴۳۲ ریال دارد. تقاضا می‌شود حساب شماره ۹۹۸۷۰۴۵۶۳۰۱ بانک ملت تا سقف بدهی مسدود گردد.",role:"رئیس اداره امور مالیاتی اراک",sign:"حسن نادری"},"letter-court":{org:"قوه قضاییه — دادگستری استان مرکزی",line:"شعبه دوم اجرای احکام مدنی اراک",no:"۱۴۰۵/اج/۲/۸۸۱۹",date:"۱۴۰۵/۰۵/۲۰",to:"ریاست محترم بانک مرکزی — اداره مسدودی حساب‌ها",sub:"دستور قضایی مسدودی حساب",body:"با سلام؛ پیرو نامه ۱۴۰۵/م/۴۴۱۲/آ مقرر می‌دارد حساب ۹۹۸۷۰۴۵۶۳۰۱ به نام مریم جعفری از تاریخ ابلاغ تا سقف ۷۴۹٬۸۶۵٬۷۹۰٬۴۳۲ ریال مسدود شود و نتیجه به این شعبه اعلام گردد.",role:"دادورز شعبه دوم اجرای احکام",sign:"علیرضا میرزایی"},"letter-cbi":{org:"بانک مرکزی جمهوری اسلامی ایران",line:"اداره اطلاعات بانکی و مسدودی حساب‌ها",no:"۱۴۰۵/مس/۷۷۱۰۴",date:"۱۴۰۵/۰۵/۲۱",to:"ریاست محترم شعبه دوم اجرای احکام اراک",sub:"ابلاغ اجرای دستور مسدودی",body:"با سلام؛ عطف به نامه ۱۴۰۵/اج/۲/۸۸۱۹ دستور مسدودی در سامانه ثبت و در ۱۴۰۵/۰۵/۲۱ به بانک ملت ابلاغ شد. حساب ۹۹۸۷۰۴۵۶۳۰۱ مسدود و کارکرد آن متوقف گردیده است.",role:"مدیر اداره اطلاعات بانکی",sign:"محسن کاظمی"}}[view];
+return '<div class="page wrap"><button type="button" class="btn" data-go="case">بازگشت به پرونده</button><div class="card" style="background:#f3ead6;line-height:2"><div style="text-align:center;font-weight:700">'+L.org+'</div><div style="text-align:center">'+L.line+'</div><p>شماره: '+L.no+' — تاریخ: '+L.date+'</p><p>به: '+L.to+'</p><p><b>موضوع: '+L.sub+'</b></p><p>'+L.body+'</p><p style="text-align:left">'+L.role+'<br>'+L.sign+'<br>مهر و امضا</p></div></div>';
+}
+if(view==="process"){
+return '<div class="page wrap"><div class="card"><h2>بررسی فرآیند رفع مسدودی حساب</h2><p>'+CASE.track+' — '+CASE.name+'</p><span class="badge">'+CASE.status+'</span></div><div class="card"><div class="step done"><b>۱. دستور قضایی مسدودی</b><span>۱۸ و ۲۰ مرداد</span><p><a href="#" data-go="letter-tax">نامه دارایی</a> · <a href="#" data-go="letter-court">نامه اجرای احکام</a></p></div><div class="step done"><b>۲. ابلاغ بانک مرکزی به ملت</b><span>۲۱ مرداد</span><p><a href="#" data-go="letter-cbi">نامه بانک مرکزی</a></p></div><div class="step done"><b>۳. پرداخت مالیات ۳۱٬۳۷۰٬۰۹۸٬۴۸۰ ریال</b><span>۲۵ مرداد</span></div><div class="step now"><b>۴. درخواست رفع مسدودی</b><span>۲۵ مرداد</span></div><div class="step"><b>۵. کنترل کارشناسی</b><span>در انتظار تأیید</span></div><div class="step"><b>۶. ابلاغ رفع به بانک ملت</b><span>پس از تأیید</span></div></div><div class="card"><button type="button" class="btn ok" id="approveUnblock">تأیید و صدور دستور رفع مسدودی</button><div id="procMsg"></div></div></div>';
+}
+if(view==="inq"){
+return '<div class="page wrap"><div class="card"><h2>استعلام مسدودی</h2><label>کد ملی</label><input id="nid" placeholder="0532591002"/><button type="button" class="btn" id="doInq">استعلام</button><div id="inqOut"></div></div></div>';
+}
+return "";
+}
+function bind(){
+var nodes=document.querySelectorAll("[data-go]");
+for(var i=0;i<nodes.length;i++){(function(el){el.onclick=function(e){e.preventDefault();go(el.getAttribute("data-go"))}})(nodes[i])}
+var demos=document.querySelectorAll("[data-demo]");
+for(var j=0;j<demos.length;j++){(function(el){el.onclick=function(){for(var k=0;k<STAFF.length;k++){if(STAFF[k].code===el.getAttribute("data-demo"))session=STAFF[k]}go("dash")}})(demos[j])}
+var form=document.getElementById("loginForm");
+if(form)form.onsubmit=function(e){e.preventDefault();var code=form.code.value.replace(/\D/g,"");var s=null;for(var k=0;k<STAFF.length;k++){if(STAFF[k].code===code)s=STAFF[k]}if(!s||form.pass.value!=="123456"){document.getElementById("err").textContent="کد یا رمز نادرست است";return}session=s;go("dash")};
+var ap=document.getElementById("approveUnblock");
+if(ap)ap.onclick=function(){CASE.status="دستور رفع مسدودی صادر شد";document.getElementById("procMsg").textContent="دستور رفع برای بانک ملت ثبت شد."};
+var doInq=document.getElementById("doInq");
+if(doInq)doInq.onclick=function(){var v=(document.getElementById("nid").value||"").replace(/\D/g,"");document.getElementById("inqOut").innerHTML=(v==="0532591002"||!v)?("<p>"+CASE.name+" — "+CASE.status+"</p>"):"موردی یافت نشد"};
+}
+function render(){
+document.getElementById("app").innerHTML=pages();
+var bar=document.getElementById("staffbar");
+if(session){bar.classList.remove("hidden");document.getElementById("who").textContent=session.name;document.getElementById("deskLink").textContent="داشبورد";document.getElementById("deskLink").setAttribute("data-go","dash")}
+else{bar.classList.add("hidden");document.getElementById("deskLink").textContent="میز خدمت بانک مرکزی";document.getElementById("deskLink").setAttribute("data-go","login")}
+bind();
+}
+document.getElementById("menuBtn").onclick=function(){document.getElementById("menu").classList.toggle("open")};
+document.getElementById("logout").onclick=function(){session=null;go("home")};
+document.getElementById("q").onkeydown=function(e){if(e.key==="Enter"){e.preventDefault();go(session?"inq":"login")}};
+setInterval(function(){if(view==="home"){slide=(slide+1)%3;render()}},6000);
+render();
+})();
+</script></body></html>
